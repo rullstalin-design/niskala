@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    
+    <div class="live-background-element"></div>
 
     <header>
         <div class="container header-content">
@@ -27,7 +29,7 @@
     </header>
 
     <main>
-        <section class="hero" id="hero-section">
+        <section class="hero">
             <div class="container">
                 <h2>Mengukur Jejak Karbon Jawa Timur</h2>
                 <p>Temukan data indikatif jejak karbon di kota Anda di Jawa Timur dan hitung emisi pribadi Anda sekarang.</p>
@@ -44,20 +46,20 @@
                 
                 <div class="carousel-container">
                     <div class="carousel-track" id="news-carousel">
-                        <a href="https://sawitindonesia.com/kementerian-lingkungan-hidup-akan-menindak-tegas-perusahaan-lalai-cegah-karhutla/" target="_blank" class="carousel-item">
-                            <img src="https://i.imgur.com/n1gUe0n.jpeg" alt="Karhutla">
-                            <p>KLHK akan Tindak Tegas Perusahaan Lalai Cegah Karhutla</p>
-                        </a>
-                        <a href="https://kbr.id/berita/nasional/musim-tangkap-aktivis-berlanjut-usai-pegiat-lingkungan-dera-dan-munif-ditahan" target="_blank" class="carousel-item">
-                            <img src="https://i.imgur.com/5J3E9gQ.jpeg" alt="Aktivis Lingkungan">
+                         <a href="https://sawitindonesia.com/kementerian-lingkungan-hidup-akan-menindak-tegas-perusahaan-lalai-cegah-karhutla/" target="_blank" class="carousel-item">
+                            <img src="images/klhk-karhutla.jpg" alt="Karhutla">
+                             <p>KLHK akan Tindak Tegas Perusahaan Lalai Cegah Karhutla</p>
+                         </a>
+                         <a href="https://kbr.id/berita/nasional/musim-tangkap-aktivis-berlanjut-usai-pegiat-lingkungan-dera-dan-munif-ditahan" target="_blank" class="carousel-item">
+                            <img src="images/aktivis-lingkungan.jpg" alt="Aktivis Lingkungan">
                             <p>Musim Tangkap Aktivis Berlanjut Usai Pegiat Lingkungan Ditahan</p>
                         </a>
                         <a href="https://dki.kemenag.go.id/berita/man-4-jakarta-raih-adiwiyata-nasional-wujud-komitmen-madrasah-dalam-pendidikan-lingkungan-KUu5k" target="_blank" class="carousel-item">
-                            <img src="https://i.imgur.com/8QW6yX3.jpeg" alt="Sekolah Adiwiyata">
+                            <img src="images/sekolah-adiwiyata.jpeg" alt="Sekolah Adiwiyata">
                             <p>MAN 4 Jakarta Raih Adiwiyata Nasional wujud Komitmen Madrasah</p>
                         </a>
                         <a href="https://siaran-berita.com/kerusakan-hutan-dan-strategi-mitigasi-bencana-membangun-lingkungan-dan-masyarakat/" target="_blank" class="carousel-item">
-                            <img src="https://i.imgur.com/q12VjNf.jpeg" alt="Hutan Rusak">
+                            <img src="images/hutan-rusak.webp" alt="Hutan Rusak">
                             <p>Kerusakan Hutan dan Strategi Mitigasi Bencana Membangun Lingkungan</p>
                         </a>
                     </div>
@@ -90,22 +92,22 @@
                 
                 <div class="grid-2 calculator-layout">
                     <div class="card card-dark calculator-card">
-                        <h4>Masukkan Data Konsumsi Bulanan (Kg CO2e)</h4>
+                        <h4>Masukkan Data Konsumsi Bulanan (Estimasi)</h4>
                         <form id="carbon-calculator">
                             <div class="form-group">
                                 <label for="listrik"><i class="fas fa-bolt"></i> Konsumsi Listrik (kWh)</label>
                                 <input type="number" id="listrik" value="100" min="0" required>
-                                <small>Koefisien Emisi: x 0.6 Kg CO2e</small>
+                                <small>Koefisien Emisi: x 0.6 Kg CO2e/kWh</small>
                             </div>
                             <div class="form-group">
                                 <label for="transportasi"><i class="fas fa-gas-pump"></i> Jarak Tempuh Transportasi Pribadi (Km)</label>
                                 <input type="number" id="transportasi" value="500" min="0" required>
-                                <small>Koefisien Emisi: x 0.2 Kg CO2e</small>
+                                <small>Koefisien Emisi: x 0.2 Kg CO2e/Km</small>
                             </div>
                             <div class="form-group">
-                                <label for="daging"><i class="fas fa-drumstick-bite"></i> Frekuensi Konsumsi Daging Merah (Kali/Bulan)</label>
+                                <label for="daging"><i class="fas fa-drumstick-bite"></i> Frekuensi Konsumsi Daging Merah (Porsi/Bulan)</label>
                                 <input type="number" id="daging" value="10" min="0" required>
-                                <small>Koefisien Emisi: x 50 Kg CO2e/kali</small>
+                                <small>Koefisien Emisi: x 4.05 Kg CO2e/porsi (Estimasi)</small>
                             </div>
                             <button type="submit" class="btn btn-primary btn-full-width"><i class="fas fa-chart-bar"></i> Hitung Jejak Saya</button>
                         </form>
