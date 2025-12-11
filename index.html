@@ -146,7 +146,7 @@
                     <div id="quiz-start-screen">
                         <h4>Selamat Datang, Hunter!</h4>
                         <p>Tekan tombol di bawah untuk memulai perburuan pengetahuan (5 Soal).</p>
-                        <button id="start-quiz-btn" class="cta-button btn-full-width"><i class="fas fa-play"></i> Mulai Quiz</button>
+                        <button id="start-quiz-btn" class="cta-button btn-full-width quiz-start-btn"><i class="fas fa-play"></i> Mulai Quiz</button>
                     </div>
                     
                     <div id="quiz-question-screen" style="display: none;">
@@ -193,7 +193,7 @@
                 <p class="section-description">Hitung emisi bulanan Anda berdasarkan konsumsi utama. Emisi diukur dalam Kilogram CO2e.</p>
                 
                 <div class="grid-2 calculator-layout">
-                    <div class="card card-dark calculator-card">
+                    <div class="card calculator-card">
                         <h4>Masukkan Data Konsumsi Bulanan (Estimasi)</h4>
                         <form id="carbon-calculator">
                             <div class="form-group">
@@ -211,7 +211,7 @@
                                 <input type="number" id="air" value="15" min="0" required>
                                 <small>Koefisien Emisi: x 0.5 Kg CO2e/m³ (Pompa & Pengolahan)</small>
                             </div>
-                             <div class="form-group">
+                            <div class="form-group">
                                 <label for="sampah"><i class="fas fa-trash-alt"></i> Sampah Rumah Tangga (Kg/Bulan)</label>
                                 <input type="number" id="sampah" value="20" min="0" required>
                                 <small>Koefisien Emisi: x 0.4 Kg CO2e/Kg Sampah (TPA)</small>
@@ -225,11 +225,11 @@
                         </form>
                     </div>
 
-                    <div class="card card-dark result-visualization-card">
+                    <div class="card result-visualization-card">
                         <h4><i class="fas fa-chart-pie"></i> Visualisasi Emisi & Rekomendasi</h4>
                         
                         <div class="chart-container">
-                            <canvas id="carbonChart" aria-label="Diagram Jejak Karbon Pribadi"></canvas> 
+                            <canvas id="carbonChart" aria-label="Diagram Jejak Karbon Pribadi" style="min-height: 250px;"></canvas> 
                         </div>
                         
                         <div class="result-status-block" style="display: none;">
