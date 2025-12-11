@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌳 GloKarbon | Glosarium Jejak Karbon Jawa Timur</title>
+    <title>📚 Pusat Edukasi GloKarbon</title>
     
     <link rel="stylesheet" href="style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     
-    <div class="live-background-element"></div>
-
     <header>
         <div class="container header-content">
-            <h1 class="logo">GloKarbon</h1>
+            <h1 class="logo"><a href="index.html">GloKarbon</a></h1>
             <nav class="main-nav">
-                <a href="#glosarium-karbon" class="nav-button"><i class="fas fa-map-marked-alt"></i> Glosarium Jatim</a>
-                <a href="#aplikasi" class="nav-button"><i class="fas fa-calculator"></i> Kalkulator</a>
-                <a href="https://chat.whatsapp.com/BUelWODaVWuHQmtcADrghW" target="_blank" class="nav-button"><i class="fab fa-whatsapp"></i> Join Komunitas</a>
-                <a href="#tentang-kami" class="nav-button"><i class="fas fa-info-circle"></i> Tentang Kami</a>
+                <a href="index.html" class="nav-button"><i class="fas fa-home"></i> Beranda Utama</a>
+                <a href="#video-grid" class="nav-button"><i class="fas fa-chalkboard-teacher"></i> Mulai Belajar</a>
             </nav>
             <button id="mode-toggle" class="mode-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
             <button class="menu-toggle"><i class="fas fa-bars"></i></button>
@@ -29,143 +24,45 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="content-section" style="padding-top: 100px;">
             <div class="container">
-                <h2>Mengukur Jejak Karbon Jawa Timur</h2>
-                <p>Temukan data indikatif jejak karbon di kota Anda di Jawa Timur dan hitung emisi pribadi Anda sekarang.</p>
-                <div class="hero-actions">
-                    <a href="#glosarium-karbon" class="cta-button"><i class="fas fa-search-location"></i> Cek Kota Saya</a>
-                    <a href="#aplikasi" class="cta-button btn-secondary-hero"><i class="fas fa-calculator"></i> Hitung Jejak</a>
-                </div>
-            </div>
-        </section>
+                <h2><i class="fas fa-book-open"></i> Pusat Edukasi Karbon dan Iklim</h2>
+                <p class="section-description">Kumpulan video YouTube pilihan untuk meningkatkan pemahaman Anda tentang jejak karbon, perubahan iklim, dan aksi nyata yang bisa dilakukan.</p>
 
-        <section id="rekomendasi-berita" class="content-section" style="padding-bottom: 30px;">
-            <div class="container">
-                <h3 style="margin-bottom: 20px;"><i class="fas fa-rss"></i> Berita dan Aksi Lingkungan</h3>
-                
-                <div class="carousel-container">
-                    <div class="carousel-track" id="news-carousel">
-                        <a href="https://www.msn.com/id-id/berita/other/aksi-tanam-700-pohon-dinas-lingkungan-hidup-garut-dan-warga-kompak-hijaukan-puncak-rabbany/ar-AA1RsF9G" target="_blank" class="carousel-item">
-                            <img src="images/garut.jpg" alt="Aksi Tanam Pohon Garut">
-                            <p>DLH Garut dan Warga Kompak Hijaukan Puncak Rabbany dengan 700 Pohon</p>
-                        </a>
-                        <a href="https://news.detik.com/berita/d-8252495/kasus-gelondongan-kayu-terbawa-banjir-di-garoga-anggoli-naik-penyidikan" target="_blank" class="carousel-item">
-                            <img src="images/kayu.jpg" alt="Penyelidikan Kayu Gelondongan Ilegal">
-                            <p>Kasus Gelondongan Kayu Terbawa Banjir di Garoga Anggoli Naik Penyidikan</p>
-                        </a>
-                        <a href="https://sawitindonesia.com/kementerian-lingkungan-hidup-akan-menindak-tegas-perusahaan-lalai-cegah-karhutla/" target="_blank" class="carousel-item">
-                             <img src="images/klhk-karhutla.jpg" alt="Karhutla">
-                             <p>KLHK akan Tindak Tegas Perusahaan Lalai Cegah Karhutla</p>
-                         </a>
-                         <a href="https://kbr.id/berita/nasional/musim-tangkap-aktivis-berlanjut-usai-pegiat-lingkungan-dera-dan-munif-ditahan" target="_blank" class="carousel-item">
-                             <img src="images/aktivis-lingkungan.jpg" alt="Aktivis Lingkungan">
-                             <p>Musim Tangkap Aktivis Berlanjut Usai Pegiat Lingkungan Ditahan</p>
-                         </a>
-                         <a href="https://dki.kemenag.go.id/berita/man-4-jakarta-raih-adiwiyata-nasional-wujud-komitmen-madrasah-dalam-pendidikan-lingkungan-KUu5k" target="_blank" class="carousel-item">
-                             <img src="images/sekolah-adiwiyata.jpeg" alt="Sekolah Adiwiyata">
-                             <p>MAN 4 Jakarta Raih Adiwiyata Nasional wujud Komitmen Madrasah</p>
-                         </a>
-                         <a href="https://siaran-berita.com/kerusakan-hutan-dan-strategi-mitigasi-bencana-membangun-lingkungan-dan-masyarakat/" target="_blank" class="carousel-item">
-                             <img src="images/hutan-rusak.webp" alt="Hutan Rusak">
-                             <p>Kerusakan Hutan dan Strategi Mitigasi Bencana Membangun Lingkungan</p>
-                         </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="glosarium-karbon" class="content-section">
-            <div class="container">
-                <h3><i class="fas fa-city"></i> Glosarium Karbon Wilayah JATIM</h3>
-                <p class="section-description">Cari kabupaten/kota di **Jawa Timur** untuk melihat jejak karbon regional indikatif (Ton CO2e/kapita) dan rekomendasi tindakan.</p>
-                
-                <div class="search-box">
-                    <input type="text" id="city-search-input" list="city-list" placeholder="Cari Kota/Kabupaten di Jatim..." onkeyup="searchCity()">
-                    <datalist id="city-list"></datalist>
-                    <button onclick="searchCity()" class="cta-button"><i class="fas fa-search"></i> Cari</button>
-                </div>
-
-                <div id="city-results" class="city-results-container">
-                    <p class="placeholder-text"><i class="fas fa-hand-point-up"></i> Ketik nama wilayah untuk memulai pencarian.</p>
-                </div>
-            </div>
-        </section>
-
-        <hr>
-
-        <section id="aplikasi" class="content-section secondary-bg">
-            <div class="container">
-                <h3><i class="fas fa-calculator"></i> Kalkulator Jejak Karbon Pribadi</h3>
-                <p class="section-description">Hitung emisi bulanan Anda berdasarkan konsumsi utama. Emisi diukur dalam Kilogram CO2e.</p>
-                
-                <div class="grid-2 calculator-layout">
-                    <div class="card card-dark calculator-card">
-                        <h4>Masukkan Data Konsumsi Bulanan (Estimasi)</h4>
-                        <form id="carbon-calculator">
-                            <div class="form-group">
-                                <label for="listrik"><i class="fas fa-bolt"></i> Konsumsi Listrik (kWh)</label>
-                                <input type="number" id="listrik" value="100" min="0" required>
-                                <small>Koefisien Emisi: x 0.6 Kg CO2e/kWh</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="transportasi"><i class="fas fa-gas-pump"></i> Jarak Tempuh Transportasi Pribadi (Km)</label>
-                                <input type="number" id="transportasi" value="500" min="0" required>
-                                <small>Koefisien Emisi: x 0.2 Kg CO2e/Km</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="daging"><i class="fas fa-drumstick-bite"></i> Frekuensi Konsumsi Daging Merah (Porsi/Bulan)</label>
-                                <input type="number" id="daging" value="10" min="0" required>
-                                <small>Koefisien Emisi: x 4.05 Kg CO2e/porsi (Estimasi)</small>
-                            </div>
-                            <button type="submit" class="cta-button btn-full-width"><i class="fas fa-chart-bar"></i> Hitung Jejak Saya</button>
-                        </form>
+                <div id="video-grid" class="video-grid">
+                    
+                    <div class="card video-item">
+                        <h4>Apa Jadinya Kalo Gak Ada Karbon Dioksida?</h4>
+                        <div class="video-responsive">
+                             <iframe src="https://www.youtube.com/embed/nZqk1uyCus0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p>Video dari Kok Bisa? menjelaskan mengapa gas karbon dioksida sangat penting bagi bumi, namun juga berbahaya jika berlebihan.</p>
                     </div>
 
-                    <div class="card card-dark result-visualization-card">
-                        <h4><i class="fas fa-chart-pie"></i> Visualisasi Emisi & Rekomendasi</h4>
-                        
-                        <div class="chart-container">
-                            <canvas id="carbonChart" aria-label="Diagram Jejak Karbon Pribadi"></canvas> 
+                    <div class="card video-item">
+                        <h4>Yuk Ketahui Pentingnya Perubahan Iklim!</h4>
+                        <div class="video-responsive">
+                            <iframe src="https://www.youtube.com/embed/kyqy6XiqWx4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        
-                        <div class="result-status-block" style="display: none;">
-                            <p id="total-carbon-display" class="total-display"></p>
-                            <p id="pohon-display" class="pohon-display"></p>
-                            <p id="status-display" class="status-indicator-text"></p>
-                            <div id="action-recommendation" class="city-action-block">
-                                </div>
-                        </div>
-                        <div id="result-output" class="result-output">
-                            <p class="initial-prompt">Tekan "Hitung Jejak Saya" untuk melihat total emisi dan saran aksi nyata.</p>
-                        </div>
+                        <p>Pembahasan pentingnya perubahan iklim, dampaknya, dan peran manusia dalam menghadapinya.</p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <hr>
+                    <div class="card video-item">
+                        <h4>Mengenal Daur Karbon, Penyeimbang Ketersediaan Karbon di Bumi</h4>
+                        <div class="video-responsive">
+                            <iframe src="https://www.youtube.com/embed/sBQ-UW74zbI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p>Pelajari siklus alami perputaran karbon di bumi dan fungsinya sebagai penyeimbang alam.</p>
+                    </div>
 
-        <section id="tentang-kami" class="content-section">
-            <div class="container">
-                <h3><i class="fas fa-users"></i> Tentang Kami</h3>
-                
-                <div class="card card-dark" style="margin-bottom: 30px;">
-                    <h4><i class="fas fa-comments"></i> Pesan dan Kesan Tim Pengembang</h4>
-                    <blockquote class="pesan-kesan">
-                        "Kegiatan kokurikuler ini sungguh seru dan bermanfaat, di mana kami mendapatkan pengalaman berharga dalam membangun Glokarbon, website glosarium dan kalkulator jejak karbon untuk Jawa Timur. Kami merasa kompetensi keahlian kami meningkat pesat dan pada saat yang sama, kesadaran iklim kami pun semakin kuat. Kami sangat berharap **Glokarbon dapat terus dikembangkan menjadi rujukan utama bagi masyarakat Jawa Timur dalam mengukur jejak karbon dan mengambil aksi nyata, serta semoga kegiatan pembelajaran berorientasi solusi seperti ini terus dilaksanakan untuk memotivasi siswa lainnya.**"
-                    </blockquote>
-                </div>
-
-                <div class="card">
-                    <h4>💡 Visi Glokarbon (Singkat)</h4>
-                    <p>Mendorong Jawa Timur menuju masyarakat sadar iklim dan rendah karbon melalui akses mudah ke informasi dan alat perhitungan emisi.</p>
-
-                    <h4>✅ Misi Glokarbon (Singkat)</h4>
-                    <ul class="mission-list">
-                        <li>**Edukasi:** Menyediakan Glosarium Karbon (Glokarbon) yang ringkas dan kontekstual untuk meningkatkan literasi iklim di Jawa Timur.</li>
-                        <li>**Kalkulasi:** Mengoperasikan Kalkulator Jejak Karbon yang mudah digunakan untuk mengukur emisi individu, rumah tangga, dan UMKM lokal.</li>
-                        <li>**Inspirasi:** Menjadi media berita terpercaya yang menginspirasi aksi nyata mitigasi perubahan iklim di tingkat komunitas.</li>
-                    </ul>
+                    <div class="card video-item">
+                        <h4>Yuk, Jaga Lingkungan Tetap Hijau! 🌿 | Tips Ramah Lingkungan untuk Anak-Anak</h4>
+                        <div class="video-responsive">
+                            <iframe src="https://www.youtube.com/embed/QyC6Lmt5kZU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p>Tips praktis dan edukatif mengenai gaya hidup ramah lingkungan, cocok untuk anak-anak dan keluarga.</p>
+                    </div>
+                    
                 </div>
             </div>
         </section>
