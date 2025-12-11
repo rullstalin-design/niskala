@@ -1,13 +1,284 @@
-/* 
- * map-style.css
- * Styling untuk Peta Interaktif GloKarbon
- */
+/*
+ * style.css - GloKarbon v9.0 (Peta Interaktif + Indikator 3 Warna)
+ * Revisi: Peta Jejak Karbon + UI Modern + 3 Warna Status
+*/
 
-/* ============================================
-   STYLING PETA INTERAKTIF
-   ============================================ */
+/* --- Variabel Warna BARU dengan Dominan Hijau --- */
+:root {
+    /* Mode Terang - Green Modern Theme */
+    --color-primary: #10b981; /* Hijau zamrud modern */
+    --color-primary-dark: #059669;
+    --color-primary-light: #34d399;
+    --color-secondary: #3b82f6; /* Biru tetap untuk aksen */
+    --color-accent: #f59e0b; /* Kuning emas */
+    --color-background: #f9fafb; /* Abu sangat muda */
+    --color-card-bg: #ffffff;
+    --color-text: #1f2937; /* Abu gelap */
+    --color-text-light: #6b7280;
+    --color-shadow: rgba(0, 0, 0, 0.08);
+    --color-border: #e5e7eb;
+    
+    /* Status Warna 3 Level */
+    --color-success: #10b981; /* Hijau - Rendah */
+    --color-warning: #f59e0b; /* Kuning - Sedang */
+    --color-danger: #ef4444; /* Merah - Tinggi */
+    --color-info: #3b82f6;
 
-/* Container Peta */
+    /* Warna Quiz Hunter Modern */
+    --color-quiz-bg: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    --color-quiz-text: #ffffff;
+    --color-correct: #10b981;
+    --color-wrong: #ef4444;
+    --color-quiz-accent: #fbbf24;
+}
+
+/* --- Dark Mode Variables - Green Elegant --- */
+body.dark-mode {
+    --color-primary: #10b981;
+    --color-primary-dark: #34d399;
+    --color-primary-light: #6ee7b7;
+    --color-secondary: #60a5fa;
+    --color-accent: #fbbf24;
+    --color-background: #111827; /* Abu gelap premium */
+    --color-card-bg: #1f2937;
+    --color-text: #f3f4f6;
+    --color-text-light: #d1d5db;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+    --color-border: #374151;
+    
+    --color-quiz-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* --- Base & Typography Modern --- */
+body {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    transition: all 0.4s ease;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Live Background Modern */
+.live-background-element {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+    opacity: 0.3;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- Header & Navigation Modern --- */
+header {
+    background-color: var(--color-card-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--color-shadow);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.main-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-button {
+    background: transparent;
+    color: var(--color-text) !important;
+    border: 2px solid transparent;
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-button:hover {
+    background: var(--color-primary);
+    color: white !important;
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+}
+
+.nav-button i {
+    font-size: 1rem;
+}
+
+.mode-toggle, .menu-toggle {
+    background: var(--color-background);
+    border: 2px solid var(--color-border);
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mode-toggle:hover, .menu-toggle:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* --- Hero Section Modern --- */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('images/rakum.jpg') center/cover fixed;
+    position: relative;
+    padding: 140px 0;
+    text-align: center;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 3.5rem;
+    margin-bottom: 24px;
+    line-height: 1.2;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, var(--color-primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    color: #e5e7eb;
+    font-size: 1.3rem;
+    margin-bottom: 48px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-actions .cta-button {
+    background: var(--color-primary);
+    color: white;
+    padding: 18px 36px;
+    border-radius: 50px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+}
+
+.hero-actions .cta-button:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+}
+
+.btn-secondary-hero {
+    background: transparent;
+    color: white;
+    border: 3px solid white;
+    padding: 18px 36px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-hero:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-primary);
+    transform: translateY(-5px);
+}
+
+/* --- Content Sections --- */
+.content-section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.secondary-bg {
+    background: linear-gradient(135deg, var(--color-background) 0%, #f0fdf4 100%);
+}
+
+body.dark-mode .secondary-bg {
+    background: linear-gradient(135deg, var(--color-background) 0%, #1a1f2e 100%);
+}
+
+.content-section h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+}
+
+.section-description {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+/* --- Peta Interaktif Styles --- */
 .carbon-map-container {
     height: 600px;
     width: 100%;
@@ -195,203 +466,260 @@
     font-size: 0.95rem;
 }
 
-/* Tooltip Leaflet Custom */
-.leaflet-tooltip {
-    background: var(--color-card-bg) !important;
-    border: 2px solid var(--color-border) !important;
-    color: var(--color-text) !important;
-    font-weight: 600 !important;
-    border-radius: 10px !important;
-    padding: 12px 16px !important;
-    font-size: 0.95rem !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+/* --- Carousel Modern --- */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
 }
 
-.leaflet-popup-content {
-    font-family: 'Inter', sans-serif !important;
-    color: var(--color-text) !important;
-}
-
-.leaflet-popup-content-wrapper {
-    background: var(--color-card-bg) !important;
-    border-radius: 12px !important;
-    border: 2px solid var(--color-border) !important;
-}
-
-.leaflet-popup-tip {
-    background: var(--color-card-bg) !important;
-}
-
-/* Responsive Peta */
-@media (max-width: 1024px) {
-    .legend-items {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .map-info-panel {
-        position: static;
-        width: 100%;
-        transform: none;
-        margin-top: 30px;
-        max-height: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .carbon-map-container {
-        height: 400px;
-    }
-    
-    .legend-items {
-        grid-template-columns: 1fr;
-    }
-    
-    .map-info-stats {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ============================================
-   INDIKATOR STATUS 3 WARNA
-   ============================================ */
-
-/* Style untuk indikator status di Kalkulator dan Glosarium */
-.carbon-status-indicator {
+.carousel-track {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 20px;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 320px;
+    background: var(--color-card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px var(--color-shadow);
+}
+
+.carousel-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-item p {
+    padding: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+/* --- Video Grid Modern --- */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+}
+
+.video-item {
+    background: var(--color-card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px var(--color-shadow);
+}
+
+.video-item h4 {
+    color: var(--color-primary);
+    padding: 20px 20px 0;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.video-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    margin: 20px;
     border-radius: 12px;
-    margin: 20px 0;
-    font-weight: 600;
-    font-size: 1.1rem;
+    overflow: hidden;
 }
 
-/* Status Hijau (Rendah) */
-.status-low {
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.2) 100%);
-    border: 2px solid #10b981;
-    color: #10b981;
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
-.status-low::before {
-    content: '✓';
-    background: #10b981;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Status Kuning (Sedang) */
-.status-medium {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%);
-    border: 2px solid #f59e0b;
-    color: #f59e0b;
-}
-
-.status-medium::before {
-    content: '⚠';
-    background: #f59e0b;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Status Merah (Tinggi) */
-.status-high {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.2) 100%);
-    border: 2px solid #ef4444;
-    color: #ef4444;
-}
-
-.status-high::before {
-    content: '⚠';
-    background: #ef4444;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-/* Status badge di peta dan glosarium */
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    margin-left: 10px;
-}
-
-.badge-low {
-    background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.badge-medium {
-    background: rgba(245, 158, 11, 0.1);
-    color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-.badge-high {
-    background: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-/* Styling untuk kota result card dengan indikator warna */
-.city-result-card .status-indicator-text {
-    font-size: 1.1rem;
-    padding: 10px 20px;
-    border-radius: 8px;
-    display: inline-block;
-    margin-top: 10px;
-    font-weight: 600;
-}
-
-/* Footer tambahan */
-.footer-attribution {
-    font-size: 0.9rem;
+.video-item p {
+    padding: 0 20px 20px;
     color: var(--color-text-light);
-    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+/* --- Glosarium Search Modern --- */
+.search-box {
+    display: flex;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    background: var(--color-card-bg);
+    padding: 8px;
+    border-radius: 50px;
+    border: 2px solid var(--color-border);
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.search-box input[type="text"] {
+    flex: 1;
+    padding: 16px 24px;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--color-text);
+    outline: none;
+}
+
+.search-box .cta-button {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-box .cta-button:hover {
+    background: var(--color-primary-dark);
+    transform: scale(1.05);
+}
+
+/* --- Kalkulator Modern --- */
+.calculator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.calculator-card, .result-visualization-card {
+    background: var(--color-card-bg);
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 30px var(--color-shadow);
+}
+
+.form-group {
+    margin-bottom: 28px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: var(--color-background);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    color: var(--color-text-light);
+    font-size: 0.85rem;
+}
+
+.btn-full-width {
+    width: 100%;
+    padding: 18px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.footer-attribution i {
-    margin-right: 5px;
+.btn-full-width:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
 }
-/* Tambahkan di bagian akhir style.css */
 
-/* ============================================
-   INDIKATOR STATUS 3 WARNA
-   ============================================ */
+/* Chart Container Modern */
+.chart-container {
+    position: relative;
+    height: 300px;
+    margin: 30px 0;
+}
 
-/* Style untuk indikator status di Kalkulator dan Glosarium */
+.result-status-block {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    border: 2px solid var(--color-success);
+}
+
+body.dark-mode .result-status-block {
+    background: linear-gradient(135deg, #1a2a1f 0%, #1e3a2a 100%);
+}
+
+.total-display {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--color-success);
+    margin: 0 0 15px 0;
+}
+
+.pohon-display {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* --- INDIKATOR STATUS 3 WARNA --- */
 .carbon-status-indicator {
     display: flex;
     align-items: center;
@@ -499,8 +827,348 @@
     border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-/* Responsive untuk indikator status */
+/* --- Quiz Hunter MODERN --- */
+.quiz-wayground {
+    background: var(--color-quiz-bg);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-wayground::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 20s infinite linear;
+}
+
+@keyframes pulse {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.quiz-container {
+    background: var(--color-card-bg);
+    border-radius: 24px;
+    padding: 50px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.quiz-container h4 {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    text-align: center;
+    margin: 30px 0;
+    line-height: 1.6;
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 40px 0;
+}
+
+.answer-btn {
+    padding: 22px;
+    background: var(--color-background);
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.answer-btn:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateX(10px);
+}
+
+.answer-btn.correct {
+    background: var(--color-success);
+    color: white;
+    border-color: var(--color-success);
+    animation: correctPulse 0.5s;
+}
+
+.answer-btn.wrong {
+    background: var(--color-danger);
+    color: white;
+    border-color: var(--color-danger);
+    animation: wrongShake 0.5s;
+}
+
+@keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.feedback-text {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    min-height: 40px;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.quiz-start-btn, #restart-quiz-btn {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: 20px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.quiz-start-btn:hover, #restart-quiz-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+}
+
+.total-score-display {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 20px 0;
+}
+
+/* --- About & Footer --- */
+.pesan-kesan {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border-left: 4px solid var(--color-primary);
+    padding: 30px;
+    border-radius: 16px;
+    font-style: italic;
+    line-height: 1.8;
+    margin: 30px 0;
+}
+
+.mission-list {
+    list-style: none;
+    padding: 0;
+}
+
+.mission-list li {
+    padding: 15px 0 15px 40px;
+    position: relative;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.mission-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    background: var(--color-primary);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 0;
+    background: var(--color-card-bg);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+}
+
+.footer-attribution {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-attribution i {
+    margin-right: 5px;
+}
+
+/* --- Leaflet Custom Styling --- */
+.leaflet-tooltip {
+    background: var(--color-card-bg) !important;
+    border: 2px solid var(--color-border) !important;
+    color: var(--color-text) !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-popup-content {
+    font-family: 'Inter', sans-serif !important;
+    color: var(--color-text) !important;
+}
+
+.leaflet-popup-content-wrapper {
+    background: var(--color-card-bg) !important;
+    border-radius: 12px !important;
+    border: 2px solid var(--color-border) !important;
+}
+
+.leaflet-popup-tip {
+    background: var(--color-card-bg) !important;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 1024px) {
+    .calculator-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .legend-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .map-info-panel {
+        position: static;
+        width: 100%;
+        transform: none;
+        margin-top: 30px;
+        max-height: none;
+    }
+}
+
 @media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-card-bg);
+        padding: 20px;
+        box-shadow: 0 10px 30px var(--color-shadow);
+        border-top: 1px solid var(--color-border);
+        z-index: 1000;
+    }
+    
+    .main-nav.active {
+        display: flex;
+    }
+    
+    .nav-button {
+        width: 100%;
+        justify-content: center;
+        margin: 5px 0;
+    }
+    
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-actions .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .content-section h3 {
+        font-size: 2rem;
+    }
+    
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-box {
+        flex-direction: column;
+        border-radius: 20px;
+    }
+    
+    .search-box input[type="text"],
+    .search-box .cta-button {
+        width: 100%;
+        border-radius: 12px;
+    }
+    
+    .quiz-container {
+        padding: 30px 20px;
+    }
+    
+    .question-text {
+        font-size: 1.3rem;
+    }
+    
+    .carbon-map-container {
+        height: 400px;
+    }
+    
+    .legend-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-info-stats {
+        grid-template-columns: 1fr;
+    }
+    
     .carbon-status-indicator {
         flex-direction: column;
         text-align: center;
