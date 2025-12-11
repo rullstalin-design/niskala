@@ -1,10 +1,10 @@
 /*
  * style.css
  * GloKarbon - Inisiatif Sadar Iklim Jatim
- * Versi: 6.0 (Perbaikan Tampilan Kalkulator & Quiz Hunter)
+ * Versi: 6.1 (Penyesuaian Hero & Glosarium Jawa)
 */
 
-/* --- Variabel Warna --- */
+/* --- Variabel Warna (Sama) --- */
 :root {
     /* Mode Terang Default */
     --color-primary: #1e8449; /* Hijau Tua */
@@ -28,7 +28,7 @@
     --color-quiz-accent: #f1c40f; /* Kuning Cerah */
 }
 
-/* --- Dark Mode Variables --- */
+/* --- Dark Mode Variables (Sama) --- */
 body.dark-mode {
     --color-primary: #2ecc71;
     --color-secondary: #3498db;
@@ -42,7 +42,7 @@ body.dark-mode {
     --color-quiz-text: #ecf0f1;
 }
 
-/* --- Base & Typography --- */
+/* --- Base & Typography (Sama) --- */
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--color-text);
@@ -74,7 +74,6 @@ h1, h2, h3, h4 {
     padding: 0 20px;
 }
 
-/* Menonaktifkan Live Background */
 .live-background-element {
     display: none; 
 }
@@ -144,7 +143,7 @@ header {
     display: none; 
 }
 
-/* --- Hero Section (RAKUM.JPG) --- */
+/* --- Hero Section (REVISI Judul & Tombol) --- */
 .hero {
     background: url('images/rakum.jpg') center center no-repeat;
     background-size: cover; 
@@ -183,17 +182,22 @@ header {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
 }
 
+.hero-actions {
+    display: flex; /* Menggunakan Flexbox untuk tombol */
+    justify-content: center;
+    gap: 15px; /* Jarak antar tombol */
+}
+
 .hero-actions .cta-button {
     background-color: var(--color-green); 
     color: white;
     padding: 15px 30px;
     border-radius: 50px; 
     font-weight: 700;
-    margin: 0 15px;
-    text-transform: uppercase;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    white-space: nowrap; /* Mencegah teks tombol patah */
 }
 .hero-actions .cta-button:hover {
      background-color: var(--color-primary);
@@ -206,8 +210,6 @@ header {
     padding: 15px 30px;
     border-radius: 50px; 
     font-weight: 700;
-    margin: 0 15px;
-    text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -216,7 +218,7 @@ header {
 }
 
 
-/* --- Sisa Section Umum --- */
+/* --- Sisa Section Umum (Sama) --- */
 
 .content-section {
     padding: 60px 0;
@@ -312,11 +314,10 @@ body.dark-mode .secondary-bg {
 }
 
 
-/* --- Gaya Quiz Hunter (Perbaikan Tampilan) --- */
+/* --- Gaya Quiz Hunter (Sama) --- */
 .quiz-wayground {
     background-color: var(--color-quiz-bg);
     color: var(--color-quiz-text);
-    /* Border yang lebih menonjol */
     border-bottom: 8px solid var(--color-quiz-accent); 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
@@ -330,7 +331,7 @@ body.dark-mode .secondary-bg {
     padding: 40px;
     background-color: var(--color-card-bg);
     color: var(--color-text);
-    border-radius: 12px; /* Lebih halus */
+    border-radius: 12px; 
     text-align: center;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
@@ -353,7 +354,6 @@ body.dark-mode .secondary-bg {
 }
 
 .answer-options {
-    /* Meningkatkan kontras dan ukuran */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -370,12 +370,12 @@ body.dark-mode .secondary-bg {
     font-size: 1.1em;
     font-weight: 600;
     transition: background-color 0.2s, transform 0.1s;
-    box-shadow: 0 4px 0 var(--color-primary); /* Efek 3D */
+    box-shadow: 0 4px 0 var(--color-primary); 
 }
 
 .answer-btn:hover:not(:disabled) {
     background-color: var(--color-primary);
-    transform: translateY(2px); /* Mengubah efek tekan */
+    transform: translateY(2px); 
     box-shadow: 0 2px 0 var(--color-primary);
 }
 
@@ -456,7 +456,7 @@ body.dark-mode .placeholder-text {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* --- Kalkulator & Chart (Perbaikan Tampilan) --- */
+/* --- Kalkulator & Chart (Sama) --- */
 .calculator-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -625,6 +625,12 @@ footer {
 
 
 /* --- Media Queries --- */
+@media (max-width: 1024px) {
+    .hero-actions {
+        flex-wrap: wrap; /* Memungkinkan tombol bungkus pada layar menengah */
+    }
+}
+
 @media (max-width: 900px) {
     .calculator-layout {
         grid-template-columns: 1fr;
