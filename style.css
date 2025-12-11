@@ -351,4 +351,37 @@
 .badge-medium {
     background: rgba(245, 158, 11, 0.1);
     color: #f59e0b;
-    border: 1px solid rgba(245, 158
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-high {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Styling untuk kota result card dengan indikator warna */
+.city-result-card .status-indicator-text {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* Footer tambahan */
+.footer-attribution {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-attribution i {
+    margin-right: 5px;
+}
