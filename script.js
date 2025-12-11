@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         transportasi: 0.2, 
         // Coeff Daging (Kg CO2e/porsi, asumsi daging merah)
         daging: 4.05, 
-        // Coeff Air (Kg CO2e/m3, asumsi listrik pompa/pengolahan) - BARU
+        // Coeff Air (Kg CO2e/m3, asumsi listrik pompa/pengolahan)
         air: 0.5,
-        // Coeff Sampah (Kg CO2e/Kg, asumsi TPA & Methane) - BARU
+        // Coeff Sampah (Kg CO2e/Kg, asumsi TPA & Methane)
         sampah: 0.4 
     };
     
@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const listrik = parseFloat(document.getElementById('listrik').value) || 0;
         const transportasi = parseFloat(document.getElementById('transportasi').value) || 0;
         const daging = parseFloat(document.getElementById('daging').value) || 0;
-        const air = parseFloat(document.getElementById('air').value) || 0; // BARU
-        const sampah = parseFloat(document.getElementById('sampah').value) || 0; // BARU
+        const air = parseFloat(document.getElementById('air').value) || 0; 
+        const sampah = parseFloat(document.getElementById('sampah').value) || 0; 
 
         const emisiListrik = listrik * CARBON_FACTORS.listrik;
         const emisiTransportasi = transportasi * CARBON_FACTORS.transportasi;
         const emisiDaging = daging * CARBON_FACTORS.daging;
-        const emisiAir = air * CARBON_FACTORS.air; // Hitungan Emisi Air
-        const emisiSampah = sampah * CARBON_FACTORS.sampah; // Hitungan Emisi Sampah
+        const emisiAir = air * CARBON_FACTORS.air; 
+        const emisiSampah = sampah * CARBON_FACTORS.sampah; 
 
         const totalEmisi = emisiListrik + emisiTransportasi + emisiDaging + emisiAir + emisiSampah;
 
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             statusText = 'Tinggi, Segera Lakukan Aksi!';
             statusColor = 'var(--color-red)';
-            recommendationText = 'Emisi Anda cukup tinggi. Pertimbangkan menggunakan transportasi umum atau beralih ke sumber energi terbarukan jika memungkinkan.';
+            recommendationText = 'Emisi Anda cukup tinggi. Pertimbangkan menggunakan transportasi umum, kurangi konsumsi daging, dan kelola sampah dengan bijak.';
         }
 
         statusDisplay.textContent = `Status Jejak Karbon Anda: ${statusText}`;
@@ -101,9 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (carbonChart) {
             carbonChart.data = data;
+            
+            // Perbarui warna label untuk Dark Mode
+            const textColor = getComputedStyle(document.body).getPropertyValue('--color-text');
+            carbonChart.options.plugins.legend.labels.color = textColor;
+            carbonChart.options.plugins.title.color = textColor;
+
             carbonChart.update();
         } else {
             const ctx = document.getElementById('carbonChart').getContext('2d');
+            const textColor = getComputedStyle(document.body).getPropertyValue('--color-text');
+
             carbonChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: data,
@@ -113,13 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         legend: {
                             position: 'top',
                             labels: {
-                                color: getComputedStyle(document.body).getPropertyValue('--color-text')
+                                color: textColor
                             }
                         },
                         title: {
                             display: true,
                             text: 'Porsi Emisi Anda',
-                            color: getComputedStyle(document.body).getPropertyValue('--color-text')
+                            color: textColor
                         }
                     }
                 }
@@ -130,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calculatorForm.addEventListener('submit', calculateCarbon);
 
     // ------------------------------------------
-    // 2. Logika Quiz Hunter (BARU)
+    // 2. Logika Quiz Hunter
     // ------------------------------------------
 
     const quizQuestions = [
@@ -200,9 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const checkAnswer = (selectedOption, correctAnswer, clickedButton) => {
-        if (!quizActive) return; // Mencegah klik ganda
+        if (!quizActive) return; 
 
         // Nonaktifkan semua tombol setelah jawaban diberikan
+        quizActive = false; // Menonaktifkan quiz hingga transisi selesai
         Array.from(answerOptionsDiv.children).forEach(btn => btn.disabled = true);
         
         if (selectedOption === correctAnswer) {
@@ -212,13 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             clickedButton.classList.add('wrong');
             // Tandai jawaban yang benar
-            Array.from(answerOptionsDiv.children).find(btn => btn.textContent === correctAnswer).classList.add('correct');
+            const correctBtn = Array.from(answerOptionsDiv.children).find(btn => btn.textContent === correctAnswer);
+            if(correctBtn) {
+                 correctBtn.classList.add('correct');
+            }
             feedbackText.textContent = `Jawaban Salah. Jawaban yang benar adalah: ${correctAnswer}.`;
         }
 
         setTimeout(() => {
             currentQuestionIndex++;
-            quizActive = true; // Aktifkan lagi untuk soal berikutnya
+            quizActive = true; 
             displayQuestion();
         }, 1500); // Tunda 1.5 detik sebelum ke soal berikutnya
     };
@@ -261,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ------------------------------------------
-    // 3. Logika Dark Mode (Jika ada)
+    // 3. Logika Dark Mode
     // ------------------------------------------
     const modeToggle = document.getElementById('mode-toggle');
     const icon = modeToggle.querySelector('i');
@@ -322,7 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------------------------
     // 5. Logika Glosarium (City Search) - Skeleton
     // ------------------------------------------
-    // (Tambahkan data kota dan logika pencarian di sini jika Anda memilikinya, 
-    // jika tidak, bagian ini tetap menjadi skeleton seperti pada kode HTML.)
+    // (Tambahkan data kota dan logika pencarian di sini)
 
 });
